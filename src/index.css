@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0c0c0c;
+  color: #e8e8e8;
+  font-family: "Kanit", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+section {
+  scroll-margin-top: 80px;
+}
+
+::selection {
+  background: #d946a8;
+  color: #0c0c0c;
+}
+
+/* Chrome / silver gradient display headline, per brief */
+.hero-heading {
+  background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Same chrome treatment, reused at smaller sizes (e.g. footer brand) */
+.chrome-text {
+  background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Purple -> magenta -> orange accent, used for primary CTAs */
+.accent-gradient {
+  background: linear-gradient(90deg, #a855f7 0%, #d946a8 50%, #f97316 100%);
+}
+
+.accent-gradient-text {
+  background: linear-gradient(90deg, #a855f7 0%, #d946a8 50%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* About bio: never break mid-word */
+.prose-copy {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* Testimonials marquee */
+.marquee-row {
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 36s linear infinite;
+}
+
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .marquee-track > * {
+    scroll-snap-align: start;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.marquee-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #bbccd7;
+  outline-offset: 3px;
+}
